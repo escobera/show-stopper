@@ -1,0 +1,34 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan=2>Progresso</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each show in model}}
+    <tr>
+      <td>{{show.name}}</td>
+      <td><span>{{show.watchedEpisodes}}/{{show.totalEpisodes}}</span></td>
+      <td class="col-md-4">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="{{show.progress}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{show.progress}}%;">
+          </div>
+        </div>
+      </td>
+      <td class="col-md-3">
+        <button {{action "watchedOne" show}} class="btn btn-success">
+          <i class="fa fa-plus fa-lg"></i>
+        </button>
+        {{#link-to "shows.edit" show class="btn btn-info"}}
+          <i class="fa fa-edit fa-lg"></i> Editar
+        {{/link-to}}
+        <button {{action "destroy" show}} class="btn btn-danger">
+          <i class="fa fa-trash fa-lg"></i> Remover
+        </button>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -4,6 +4,17 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 
+// Bootstrap
+app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
+
+//Font Awesome
+app.import("bower_components/fontawesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
+app.import("bower_components/fontawesome/fonts/fontawesome-webfont.svg", { destDir: "fonts" });
+app.import("bower_components/fontawesome/fonts/fontawesome-webfont.ttf", { destDir: "fonts" });
+app.import("bower_components/fontawesome/fonts/fontawesome-webfont.woff", { destDir: "fonts" });
+app.import("bower_components/fontawesome/fonts/fontawesome-webfont.woff2", { destDir: "fonts" });
+app.import("bower_components/fontawesome/fonts/FontAwesome.otf", { destDir: "fonts" });
+
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //
