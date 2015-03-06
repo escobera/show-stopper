@@ -15,6 +15,9 @@ app.import("bower_components/fontawesome/fonts/fontawesome-webfont.woff", { dest
 app.import("bower_components/fontawesome/fonts/fontawesome-webfont.woff2", { destDir: "fonts" });
 app.import("bower_components/fontawesome/fonts/FontAwesome.otf", { destDir: "fonts" });
 
+
+// moment.js
+app.import("bower_components/moment/min/moment.min.js")
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //

@@ -1,25 +1,24 @@
 import DS from 'ember-data';
 
-var Show = DS.Model.extend({
+export default DS.Model.extend({
   name: DS.attr('string'),
   totalEpisodes: DS.attr('number'),
-  watchedEpisodes: DS.attr('number'),
+  stoppedAt: DS.attr('number'),
+  episodeTime: DS.attr('number'),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date'),
 
-  remainingEpisodes: function() {
-    return this.get('totalEpisodes') - this.get('watchedEpisodes');
-  }.property('watchedEpisodes', 'totalEpisodes'),
+  remainingEpisodes: function () {
+    return this.get('totalEpisodes') - this.get('stoppedAt');
+  }.property('stoppedAt', 'totalEpisodes'),
 
-  progress: function() {
-    return  this.get('watchedEpisodes') / this.get('totalEpisodes') * 100;
-  }.property('watchedEpisodes', 'totalEpisodes')
+  remainingTime: function() {
+    var total = moment.duration({minutes: this.get('remainingEpisodes') * this.get('episodeTime')});
+    return total.humanize();
+  }.property('episodeTime'),
+
+  progress: function () {
+    return this.get('stoppedAt') / this.get('totalEpisodes') * 100;
+  }.property('stoppedAt', 'totalEpisodes')
 
 });
-
-Show.reopenClass( {
-  FIXTURES: [
-    { id: 1, name: "Trigun", totalEpisodes: 28, watchedEpisodes: 0 },
-    { id: 2, name: "Kamen Rider Ryuki", totalEpisodes: 50, watchedEpisodes: 0 }
-  ]
-});
-
-export default Show;

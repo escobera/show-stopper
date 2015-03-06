@@ -1,20 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  allowedLevels: [ 1,2,3,4,5,6,7,8,9 ] ,
   actions: {
-    save: function(course) {
+    save: function (show) {
       var self = this;
 
-      var success = function() {
-        self.transitionToRoute('courses.index');
+      var success = function () {
+        self.transitionToRoute('shows.index');
       };
 
-      var fail = function() {
-        alert("Não foi possível salvar a turma.");
+      var fail = function () {
+        alert("Não foi possível salvar a série.");
       };
 
-      course.save().then(success,fail);
+      show.save()
+        .then(success, fail);
     }
   }
 });

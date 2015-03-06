@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'series-bookmark',
+    modulePrefix: 'showstopper',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -18,10 +18,10 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-      'default-src': "'none'",
+      'default-src': "'none' 'self'",
       'script-src': "'self'",
       'font-src': "'self'",
-      'connect-src': "'self'",
+      'connect-src': "'self' http://localhost:3001",
       'img-src': "'self'",
       'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
       'media-src': "'self'"

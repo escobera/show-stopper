@@ -9,7 +9,7 @@ export default Ember.ArrayController.extend({
       show.save();
     },
     watchedOne: function(show) {
-      show.incrementProperty('watchedEpisodes');
+      show.incrementProperty('stoppedAt');
       show.save();
     }
   }
