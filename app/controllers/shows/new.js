@@ -1,26 +1,28 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend( {
-  allowedLevels: [ 1,2,3,4,5,6,7,8,9 ] ,
-  selectedLevel: null,
   actions: {
-    save: function(course) {
-      this.store.createRecord('course', {
-        level: course.level,
-        name: course.name
+    save: function(show) {
+      this.store.createRecord('show', {
+        name: show.name,
+        totalEpisodes: show.totalEpisodes,
+        stoppedAt: show.stoppedAt,
+        episodeTime: show.episodeTime,
+        createdAt: show.createdAt,
+        updatedAt: show.updatedAt
       });
 
       var self = this;
 
       var success = function() {
-        self.transitionToRoute('courses.index');
+        self.transitionToRoute('shows.index');
       };
 
       var fail = function() {
-        alert("Não foi possível salvar a turma.");
+        alert("Não foi possível salvar a série.");
       };
 
-      course.save().then(success,fail);
+      show.save().then(success,fail);
     }
   }
 });
