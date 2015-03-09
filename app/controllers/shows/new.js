@@ -1,28 +1,19 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend( {
+export default Ember.Controller.extend( {
   actions: {
-    save: function(show) {
-      this.store.createRecord('show', {
-        name: show.name,
-        totalEpisodes: show.totalEpisodes,
-        stoppedAt: show.stoppedAt,
-        episodeTime: show.episodeTime,
-        createdAt: show.createdAt,
-        updatedAt: show.updatedAt
-      });
-
+    save: function() {
       var self = this;
 
       var success = function() {
         self.transitionToRoute('shows.index');
       };
 
-      var fail = function() {
-        alert("Não foi possível salvar a série.");
+      var fail = function(reason) {
+        alert("Não foi possível salvar a série.\n"+reason);
       };
 
-      show.save().then(success,fail);
+      this.model.save().then(success).catch(fail);
     }
   }
 });

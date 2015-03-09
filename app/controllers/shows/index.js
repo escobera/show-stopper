@@ -5,8 +5,7 @@ export default Ember.ArrayController.extend({
   sortAscending: true,
   actions: {
     destroy: function(show) {
-      show.deleteRecord();
-      show.save();
+      show.destroyRecord();
     },
     watchedOne: function(show) {
       show.incrementProperty('stoppedAt');
